@@ -1,0 +1,22 @@
+{"users" : [
+    {
+        "fullName" : "Marcos Vinicius",
+        "register" : " A9908",
+        "access" : "Administrador",
+        "active" : true
+    },
+    {
+        "fullName" : "Marcos Miranda",
+        "register" : " B9908",
+        "access" : "Gerente",
+        "active" : true
+    },
+
+    {
+        "fullName" : "Vinicius Miranda",
+        "register" : " C9908",
+        "access" : "Funcionário",
+        "active" : false
+    }
+]
+}
