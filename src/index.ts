@@ -1,4 +1,4 @@
-import { accessOptions, userType } from "./models";
+import { accessOptions, IUser } from "./models";
 
 let content = document.getElementById('content') as HTMLInputElement;
 const button  = <HTMLInputElement>document.querySelector('button[id="add"]');
@@ -11,9 +11,9 @@ const accessOptionsValues = Object.values(accessOptions)
 
 /*--------------Função por expressão--------------------------------*/ 
 
-const getUser = async (): Promise<userType[]> => {
+const getUser = async (): Promise<IUser[]> => {
   const response: Response= await fetch('http://localhost:5011/users');
-  const users: userType[] = await response.json();
+  const users: IUser[] = await response.json();
   return users;
 }
 
@@ -21,10 +21,10 @@ const getUser = async (): Promise<userType[]> => {
 
 
 const updateUserLayout = async (): Promise<void> =>{
-  const users: userType[] = await getUser();
+  const users: IUser[] = await getUser();
   
   
-  users.map((user: userType) => {
+  users.map((user: IUser) => {
     content.innerHTML += <string>createLine(user);
   });
 };
@@ -48,7 +48,7 @@ function addEmployee(): void {
   
   const [fullName, register, admin, active, addressHome, addressWork] = formFields;
 
-  let user: userType = {
+  let user: IUser = {
     fullName: fullName!.value,
     register: register.value != '' ? register.value : undefined,
     active: active.checked,
@@ -88,9 +88,9 @@ accessOptionsValues.forEach((value: string, i: number) => {
     register = Math.random().toString(36).substring(7).toUpperCase(),
     active= false,
     access = accessOptions.undefined,
-  }: userType,
+  }: IUser,
     ...address: string[]
-   ): string {
+  ): string {
   return  `
   <div class="card mb-1">
       <div class="card-header">
