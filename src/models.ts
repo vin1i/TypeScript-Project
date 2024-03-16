@@ -1,19 +1,21 @@
-export enum accessOptions{
-    administrator = 'administrador',
-    manager = 'gerente',
-    employee = 'funcionário',
-    undefined = 'Não definido'
-  }
-  
-  interface IPerson {
-    fullName: string;
-    address?: string[];
-  }
+export enum accessOptions {
+  administrator = "administrador",
+  manager = "gerente",
+  employee = "funcionário",
+  undefined = "Não Definido",
+}
 
-  export interface IUser extends IPerson{
-    register?: string | number;
-    access?: accessOptions;
-    active?: boolean
+class Person {
+  public address?: string[];
+  // Construtor
+  constructor(public fullName: string) {}
+}
+
+export class User extends Person {
+  access?: accessOptions;
+  active?: boolean;
+
+  constructor(public fullName: string, public register?: string | number) {
+    super(fullName);
   }
-
-
+}
